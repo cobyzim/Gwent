@@ -1,0 +1,218 @@
+@startuml Class Diagram
+skinparam classAttributeIconSize 0
+
+package com.gwent.model.game {
+    Unit --> "1..*" Range : has
+    Unit --> "0..1" SpecialAbility : has
+    Unit --> "0..1" Faction : has
+    Leader --> "1" Faction : has
+    Leader --> "1" LeaderAbility : has
+    Deck --> "1" Faction: has
+    Deck --> "1" Leader: has
+    Deck --> "0..10" Special: has
+    Deck --> "22..*" Unit: has
+    Discard --> "0..*" Card: has
+    GameBoard --> "2" Deck: has
+    GameBoard --> "2" Discard: has
+    GameBoard --> "6" Lane: has
+    Lane --> "1" Range: has
+
+    class Leader extends Card
+    class Unit extends Card
+    class Special extends Card
+
+    class Card {
+        -id: int
+        -name: String
+        -quote: String
+        +getId(): int
+        +setId(): void
+        +getName(): String
+        +setName(): void
+        +getQuote(): String
+        +setQuote(): void
+    }
+
+    enum Range {
+        CLOSE
+        RANGED
+        SIEGE
+    }
+
+    enum SpecialAbility {
+        SPY
+        AGILE
+        MEDIC
+        MORALEBOOST
+        MUSTER
+        TIGHTBOND
+        SCORCH
+    }
+
+    enum Faction {
+        NILFGAARD
+        MONSTERS
+        NORTHERNREALM
+        SCOIATEL
+    }
+
+    enum LeaderAbility {
+        EredinHunt
+        EredinRiders
+        EredinWorlds
+        EredinDeath
+        FoltestTemeria
+        FoltestForged
+        FoltestSiegemaster
+        FoltestNorth
+        FrancescaElf
+        FrancescaBeautiful
+        FrancescaValley
+        FrancescaBlathanna
+        EmhyrMajesty
+        EmhyrNilfgaard
+        EmhyrFlame
+        EmhyrRelentless
+    }
+
+    class Deck {
+        -id: int
+        -faction: Faction
+        -numCards: int
+        -numCardsSpecial: int
+        -leaderCardId: int
+        -description: String
+    }
+
+    class Discard {
+        -id: int
+        -numCards: int
+    }
+
+    class Leader {
+        -id: int
+        -name: String
+        -quote: String
+        -faction: Faction
+        -ability: LeaderAbility
+        +getId(): int
+        +setId(): void
+        +getName(): String
+        +setName(): void
+        +getQuote(): String
+        +setQuote(): void
+        +getFaction(): Faction
+        +setFaction(): void
+        +getAbility(): LeaderAbility
+        +setAbility(): void
+    }
+
+    class Unit {
+        -id: int
+        -name: String
+        -quote: String
+        -strength: int
+        -range: Range
+        -specialAbility: SpecialAbility
+        -faction: Faction
+        +getId(): int
+        +setId(): void
+        +getStrength(): int
+        +setStrength(): void
+        +getName(): String
+        +setName(): void
+        +getQuote(): String
+        +setQuote(): void
+        +getRange(): Range
+        +setRange(): void
+        +getSpecialAbility(): SpecialAbility
+        +setSpecialAbility(): void
+        +getFaction(): Faction
+        +setFaction(): void
+    }
+
+    class Special {
+        -id : int
+        -name: String
+        -quote: String
+        +getId(): int
+        +setId(): void
+        +getName(): String
+        +setName(): void
+        +getQuote(): String
+        +setQuote(): void
+        }
+
+    class GameBoard {
+        -playerOneDeckId: int
+        -playerTwoDeckId: int
+        -playerOneDiscardId: int
+        -playerTwoDiscardId: int
+        -playerOneTotalCloseStrength: int
+        -playerOneTotalRangedStrength: int
+        -playerOneTotalSiegeStrength: int
+        -playerTwoTotalCloseStrength: int
+        -playerTwoTotalRangedStrength: int
+        -playerTwoTotalSiegeStrength: int
+
+    }
+
+    class Lane {
+        -id: int
+        -accountId: int
+        -totalStrength: int
+        -isHornPresent: bool
+        -range: Range
+        +getId(): int
+        +setId(): void
+        +getAccountId(): int
+        +setAccountId(): void
+        +getTotalStrength(): int
+        +setTotalStrength(): void
+        +getIsHornPresent(): bool
+        +setIsHornPresent(): void
+        +getRange: Range
+        +setRange: void
+    }
+}
+
+package com.gwent.model.player {
+    Account --> "1" Faction: has
+    Account --> "4" Deck: has
+    Account --> "0..*" GameHistory: has
+
+    class Account {
+        -id: int
+        -firstName: String
+        -lastName: String
+        -username: String
+        -password: String
+        -favDeck: Faction
+        +getId(): int
+        +setId(): void
+        +getFirstName(): String
+        +setFirstName(): void
+        +getLastName(): String
+        +setLastName(): void
+        +getUserName(): String
+        +setUserName(): void
+        +getPassword(): String
+        +setPassword(): void
+        +getFavDeck(): Faction
+        +setFavDeck(): void
+    }
+
+    class GameHistory {
+        -accountId: int
+        -result: String
+        -gameCounter: int
+        +getAccountId(): int
+        +setAccountId(): void
+        +getResult(): String
+        +setResult(): void
+        +getGameCounter(): int
+        +setGameCounter(): void
+    }
+}
+
+@enduml
