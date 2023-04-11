@@ -15,29 +15,27 @@ public class Unit extends Card {
 
     @NotBlank
     @Enumerated(value = EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false, name = "unit_range")
     private Range range;
 
-    @NotBlank
     @Enumerated(value = EnumType.STRING)
-    @Column(nullable = false)
-    private SpecialAbility ability;
+    @Column()
+    private SpecialAbility specialAbility;
 
-    @NotBlank
     @Enumerated(value = EnumType.STRING)
-    @Column(nullable = false)
+    @Column()
     private Faction faction;
 
     public Unit() {
 
     }
 
-    public Unit(@NotBlank String name, @NotBlank String quote, @NotBlank Integer strength, @NotBlank Range range, @NotBlank SpecialAbility ability,
-            @NotBlank Faction faction) {
+    public Unit(@NotBlank String name, @NotBlank String quote, @NotBlank Integer strength, @NotBlank Range range, SpecialAbility specialAbility,
+            Faction faction) {
         super(name, quote);
         this.strength = strength;
         this.range = range;
-        this.ability = ability;
+        this.specialAbility = specialAbility;
         this.faction = faction;
     }
 

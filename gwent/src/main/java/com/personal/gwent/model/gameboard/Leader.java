@@ -1,4 +1,5 @@
 package com.personal.gwent.model.gameboard;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

@@ -1,6 +1,6 @@
 package com.personal.gwent.model.gameboard;
 
-// TODO: Unsure if NONE needed or not yet
+// TODO: Pretty sure if none, just have null field in DB
 public enum SpecialAbility {
-    SPY, AGILE, MEDIC, MORALEBOOST, MUSTER, TIGHTBOND, SCORCH, NONE
+    SPY, AGILE, MEDIC, MORALEBOOST, MUSTER, TIGHTBOND, SCORCH
 }
