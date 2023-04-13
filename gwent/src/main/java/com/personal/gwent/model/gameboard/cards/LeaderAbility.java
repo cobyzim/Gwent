@@ -1,4 +1,4 @@
-package com.personal.gwent.model.gameboard;
+package com.personal.gwent.model.gameboard.cards;
 
 public enum LeaderAbility {
     EREDINHUNT, EREDINRIDERS, EREDINWORLDS, EREDINDEATH, FOLTESTTEMERIA,

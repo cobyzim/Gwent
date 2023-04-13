@@ -1,4 +1,4 @@
-package com.personal.gwent.model.gameboard;
+package com.personal.gwent.model.gameboard.cards;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
