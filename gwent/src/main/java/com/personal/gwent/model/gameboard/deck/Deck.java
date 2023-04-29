@@ -1,4 +1,4 @@
-package com.personal.gwent.model.gameboard.player;
+package com.personal.gwent.model.gameboard.deck;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
