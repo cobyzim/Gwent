@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+
 
 //import com.personal.gwent.model.gameboard.cards.Faction;
 @Entity
@@ -19,12 +22,16 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "Username can't be blank")
     @Column(unique = true, nullable = false)
+    @Pattern(regexp = "^\\S*$", message = "Username cannot have spaces")
     private String username;
 
-    @NotBlank
+    @NotBlank(message = "Password can't be blank")
     @Column(nullable = false)
+    @Pattern(regexp = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$",
+        message = "Password must have 2 uppercase letters, 1 special character, 2 numbers, 3 lowercase letters, " +
+        "and a total length of 8")
     private String password;
 
     public User() {
