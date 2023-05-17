@@ -1,5 +1,8 @@
 package com.personal.gwent.service;
 
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +16,16 @@ public class UserServiceImpl implements UserService {
     UserRepository repo;
 
     @Override
-    public User SaveUser(User user) {
+    public User saveUser(User user) {
         return repo.save(user);
     }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return repo.findByUsername(username);
+    }
+
+    
 
     
     

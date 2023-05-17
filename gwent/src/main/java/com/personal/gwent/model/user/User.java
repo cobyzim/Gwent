@@ -27,7 +27,6 @@ public class User implements Serializable {
     @Pattern(regexp = "^\\S*$", message = "Username cannot have spaces")
     private String username;
 
-    @NotBlank(message = "Password can't be blank")
     @Column(nullable = false)
     @Pattern(regexp = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$",
         message = "Password must have 2 uppercase letters, 1 special character, 2 numbers, 3 lowercase letters, " +
